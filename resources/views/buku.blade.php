@@ -5,6 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <h1 class="page-head-line">BUKU </h1>
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
         </div>
         <div class="col-md-12">           
             <div class="panel panel-default">
@@ -14,7 +19,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-striped table-bordered table-hover">
+                    <table class="table-responsive table-striped table-bordered table-hover" id="tabel-buku">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -23,14 +28,14 @@
                                 <th>Penerbit</th>
                                 <th>Tahun Terbit</th>
                                 <th>deskripsi</th>
-                                <th>Aksi</th>
+                                <th style="width: 150px;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($buku as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>    
-                                    <td>{{ $item->nama_buku }}</td>    
+                                    <td><b>{{ $item->nama_buku }}</b></td>    
                                     <td>{{ $item->author }}</td>    
                                     <td>{{ $item->penerbit }}</td>    
                                     <td>{{ $item->tahun_terbit }}</td>    

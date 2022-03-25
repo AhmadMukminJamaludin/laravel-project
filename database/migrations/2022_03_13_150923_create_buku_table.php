@@ -18,6 +18,7 @@ class CreateBukuTable extends Migration
             $table->string('nama_buku');
             $table->string('author')->nullable();
             $table->string('penerbit')->nullable();
+            $table->string('tahun_terbit', 4)->nullable();
             $table->text('desc')->nullable();
             $table->timestamps();
         });

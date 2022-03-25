@@ -20,6 +20,15 @@ class BukuController extends Controller
 
     public function addBuku(Request $request)
     {
+        $validatedData = $request->validate([
+            'nama_buku' => 'required|min:2|max:255',
+            'author' => 'required',
+            'penerbit' => 'required',
+            'desc' => 'required',
+        ], [
+            'desc.required' => 'Deskripsi tidak boleh kosong.'
+        ]);
+
         DB::table('buku')->insert([
             'nama_buku' => $request->nama_buku,
             'author' => $request->author,
@@ -28,14 +37,14 @@ class BukuController extends Controller
             'desc' => $request->desc
         ]);
         
-        return redirect('/buku');
+        return redirect('/buku')->with('status', 'Buku berhasil ditambahkan.');
     }
 
     public function deleteBuku($id)
     {
         DB::table('buku')->where('id',$id)->delete();
         
-        return redirect('/buku');
+        return redirect('/buku')->with('status', 'Buku berhasil dihapus.');
     }
 
     public function FormEditBuku($id)
@@ -47,6 +56,15 @@ class BukuController extends Controller
 
     public function EditBuku(Request $request)
     {
+        $validatedData = $request->validate([
+            'nama_buku' => 'required|min:2|max:255',
+            'author' => 'required',
+            'penerbit' => 'required',
+            'desc' => 'required',
+        ], [
+            'desc.required' => 'Deskripsi tidak boleh kosong.'
+        ]);
+
         DB::table('buku')->where('id', $request->id)->update([
             'nama_buku' => $request->nama_buku,
             'author' => $request->author,
@@ -55,6 +73,6 @@ class BukuController extends Controller
             'desc' => $request->desc
         ]);
 
-        return redirect('/buku');
+        return redirect('/buku')->with('status', 'Buku berhasil diubah.');
     }
 }

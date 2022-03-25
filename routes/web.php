@@ -32,3 +32,5 @@ Route::post('/buku/tambah_buku', 'BukuController@addBuku');
 Route::get('/buku/hapus_buku/{id}', 'BukuController@deleteBuku');
 
 Route::post('/buku/edit_buku', 'BukuController@EditBuku');
+
+Route::resource('/pengunjung', 'PengunjungController');

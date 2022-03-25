@@ -17,6 +17,7 @@
     <link href="{{ asset('assets/css/font-awesome.css') }}" rel="stylesheet" />
     <!-- CUSTOM STYLE  -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
      <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -111,6 +112,9 @@
                                 <li>
                                     <a class="nav-link" href="{{ route('buku') }}">Buku</a>
                                 </li>
+                                <li>
+                                    <a class="nav-link" href="{{ url('pengunjung') }}">pengunjung</a>
+                                </li>
                             @endguest
                         </ul>
                     </div>
@@ -147,6 +151,18 @@
     <script src="{{ asset('assets/js/jquery-1.11.1.js') }}"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
     <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('#tabel-buku').DataTable({
+                responsive:     true,
+                scrollY:        300,
+                deferRender:    true,
+                scroller:       true
+            });
+        } );
+    </script>
 
 </body>
 </html>
